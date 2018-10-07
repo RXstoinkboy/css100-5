@@ -1,0 +1,252 @@
+@import url("https://fonts.googleapis.com/css?family=Open+Sans");
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: "Open Sans", sans-serif;
+}
+
+.wrapper {
+  position: absolute;
+  width: 400px;
+  height: 400px;
+  top: 50%;
+  left: 50%;
+  background: linear-gradient(135deg, #4ca373 0%, #005631 100%);
+  border-radius: 3px;
+  transform: translate(-50%, -50%);
+  box-shadow: 7px 7px 15px rgba(0, 0, 0, 0.3), -1px -2px 5px rgba(0, 0, 0, 0.3);
+}
+
+.card {
+  position: absolute;
+  width: 280px;
+  height: 220px;
+  background-color: whitesmoke;
+  border-radius: 3px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  box-shadow: 2px 4px 5px rgba(0, 0, 0, 0.3), -1px -2px 5px rgba(0, 0, 0, 0.3);
+}
+.card .header {
+  position: relative;
+  background-color: #da7e30;
+  border-radius: 3px 3px 0 0;
+  height: 60px;
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+}
+.card .header .title, .card .header .text {
+  margin-left: 20px;
+  width: 40%;
+  color: white;
+  font-weight: 600;
+}
+.card .header .text {
+  margin-right: 20px;
+  margin-left: auto;
+  text-align: right;
+}
+.card .header .big {
+  font-size: 15px;
+  line-height: 15px;
+}
+.card .header .small {
+  font-size: 12px;
+  line-height: 12px;
+}
+.card .legend {
+  position: relative;
+  text-align: right;
+  font-size: 10px;
+  line-height: 12px;
+  margin: 7px 20px 7px 0;
+}
+.card .legend .views {
+  position: relative;
+  padding: 0 14px 0 14px;
+}
+.card .legend .views:before {
+  content: "";
+  position: absolute;
+  width: 10px;
+  height: 4px;
+  top: 6px;
+  display: block;
+  border-radius: 3px;
+  background-color: #922427;
+}
+.card .legend .purchases {
+  position: relative;
+  padding-left: 14px;
+}
+.card .legend .purchases:before {
+  content: "";
+  position: absolute;
+  width: 10px;
+  height: 4px;
+  top: 6px;
+  display: block;
+  border-radius: 3px;
+  background-color: #3769b1;
+}
+.card .graph {
+  position: relative;
+  height: 100px;
+  left: 8px;
+}
+.card .graph .line-1, .card .graph .line-3, .card .graph .line-2 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 1px;
+  width: 262px;
+  background-color: #dddddd;
+}
+.card .graph .line-2 {
+  top: 50%;
+}
+.card .graph .line-3 {
+  top: 100%;
+}
+.card .data svg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+.card .data polyline {
+  fill: none;
+  stroke-width: 2;
+  stroke-linecap: round;
+}
+.card .data.red polyline {
+  stroke: #922427;
+}
+.card .data.blue polyline {
+  stroke: #3769b1;
+}
+.card .data [class^=dot-] {
+  position: absolute;
+  height: 6px;
+  width: 6px;
+  border-radius: 50%;
+  z-index: 10;
+  cursor: pointer;
+}
+.card .data [class^=dot-]:hover .tooltip {
+  visibility: visible;
+  opacity: 1;
+  transform: translate3d(-50%, 0, 0);
+}
+.card .data .tooltip {
+  position: absolute;
+  color: white;
+  font-weight: 600;
+  left: 50%;
+  transform: translate3d(-50%, -10px, 0);
+  bottom: 14px;
+  padding: 5px;
+  border-radius: 3px;
+  font-size: 12px;
+  line-height: 12px;
+  visibility: hidden;
+  opacity: 0;
+  transition: transform 0.5s ease 0s, opacity 0.5s ease 0s;
+}
+.card .data .tooltip:after {
+  content: "";
+  display: block;
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  left: 50%;
+  margin-left: -4px;
+  bottom: -4px;
+  transform: rotate(45deg);
+}
+.card .data.red [class^=dot-],
+.card .data.red .tooltip,
+.card .data.red .tooltip:after {
+  background-color: #922427;
+}
+.card .data.red .dot-1 {
+  left: 7px;
+  top: 43px;
+}
+.card .data.red .dot-2 {
+  left: 48px;
+  top: 9px;
+}
+.card .data.red .dot-3 {
+  left: 88px;
+  top: 20px;
+}
+.card .data.red .dot-4 {
+  left: 128px;
+  top: 8px;
+}
+.card .data.red .dot-5 {
+  left: 169px;
+  top: 35px;
+}
+.card .data.red .dot-6 {
+  left: 209px;
+  top: 45px;
+}
+.card .data.red .dot-7 {
+  left: 249px;
+  top: 16px;
+}
+.card .data.blue [class^=dot-],
+.card .data.blue .tooltip,
+.card .data.blue .tooltip:after {
+  background-color: #3769b1;
+}
+.card .data.blue .dot-1 {
+  left: 7px;
+  top: 58px;
+}
+.card .data.blue .dot-2 {
+  left: 48px;
+  top: 47px;
+}
+.card .data.blue .dot-3 {
+  left: 88px;
+  top: 62px;
+}
+.card .data.blue .dot-4 {
+  left: 128px;
+  top: 52px;
+}
+.card .data.blue .dot-5 {
+  left: 169px;
+  top: 58px;
+}
+.card .data.blue .dot-6 {
+  left: 209px;
+  top: 71px;
+}
+.card .data.blue .dot-7 {
+  left: 249px;
+  top: 61px;
+}
+.card .days {
+  width: 100%;
+  margin: 0 auto;
+}
+.card .days .day {
+  display: block;
+  float: left;
+  text-align: center;
+  width: 14.2857142857%;
+  font-size: 12px;
+  color: gray;
+}
+
+/*# sourceMappingURL=style.css.map */

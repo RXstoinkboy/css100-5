@@ -1,0 +1,311 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans');
+
+$red: rgb(146, 36, 39);
+$blue: rgb(55, 105, 177);
+$orange: #da7e30;
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Open Sans', sans-serif;
+}
+
+.wrapper {
+    position: absolute;
+    width: 400px;
+    height: 400px;
+    top: 50%;
+    left: 50%;
+    background: linear-gradient(135deg, rgba(76, 163, 115, 1) 0%, rgba(0, 86, 49, 1) 100%);
+    border-radius: 3px;
+    transform: translate(-50%, -50%);
+    box-shadow: 7px 7px 15px rgba(0, 0, 0, 0.3), -1px -2px 5px rgba(0, 0, 0, 0.3);
+}
+
+.card {
+    position: absolute;
+    width: 280px;
+    height: 220px;
+    background-color: whitesmoke;
+    border-radius: 3px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    box-shadow: 2px 4px 5px rgba(0, 0, 0, 0.3), -1px -2px 5px rgba(0, 0, 0, 0.3);
+
+    .header {
+        position: relative;
+        background-color: $orange;
+        border-radius: 3px 3px 0 0;
+        height: 60px;
+        display: flex;
+        justify-content: space-evenly;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        align-items: center;
+
+        .title {
+            margin-left: 20px;
+            width: 40%;
+            color: white;
+            font-weight: 600;
+        }
+
+        .text {
+            @extend .title;
+            margin-right: 20px;
+            margin-left: auto;
+            text-align: right;
+        }
+
+        .big {
+            font-size: 15px;
+            line-height: 15px;
+        }
+
+        .small {
+            font-size: 12px;
+            line-height: 12px;
+        }
+    }
+
+    .legend {
+        position: relative;
+        text-align: right;
+        font-size: 10px;
+        line-height: 12px;
+        margin: 7px 20px 7px 0;
+
+        .views {
+            position: relative;
+            padding: 0 14px 0 14px;
+        }
+
+        .views:before {
+            content: '';
+            position: absolute;
+            width: 10px;
+            height: 4px;
+            top: 6px;
+            display: block;
+            border-radius: 3px;
+            background-color: $red;
+        }
+
+        .purchases {
+            position: relative;
+            padding-left: 14px;
+        }
+
+        .purchases:before {
+            content: '';
+            position: absolute;
+            width: 10px;
+            height: 4px;
+            top: 6px;
+            display: block;
+            border-radius: 3px;
+            background-color: $blue;
+        }
+    }
+
+    .graph {
+        position: relative;
+        height: 100px;
+        left: 8px;
+
+        .line-1 {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 1px;
+            width: 262px;
+            background-color: rgb(221, 221, 221);
+        }
+
+        .line-2 {
+            @extend .line-1;
+            top: 50%;
+        }
+
+        .line-3 {
+            @extend .line-1;
+            top: 100%;
+        }
+    }
+
+    .data {
+        svg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+        }
+
+        polyline {
+            fill: none;
+            stroke-width: 2;
+            stroke-linecap: round;
+        }
+
+        &.red polyline {
+            stroke: $red;
+        }
+
+        &.blue polyline {
+            stroke: $blue;
+        }
+
+        [class^="dot-"] {
+            position: absolute;
+            height: 6px;
+            width: 6px;
+            border-radius: 50%;
+            z-index: 10;
+            cursor: pointer;
+
+            &:hover .tooltip {
+                visibility: visible;
+                opacity: 1;
+                transform: translate3d(-50%, 0, 0);
+            }
+        }
+
+        .tooltip {
+            position: absolute;
+            color: white;
+            font-weight: 600;
+            left: 50%;
+            transform: translate3d(-50%, -10px, 0);
+            bottom: 14px;
+            padding: 5px;
+            border-radius: 3px;
+            font-size: 12px;
+            line-height: 12px;
+            visibility: hidden;
+            opacity: 0;
+            transition: transform 0.5s ease 0s, opacity 0.5s ease 0s;
+
+            &:after {
+                content: '';
+                display: block;
+                position: absolute;
+                width: 8px;
+                height: 8px;
+                left: 50%;
+                margin-left: -4px;
+                bottom: -4px;
+                transform: rotate(45deg);
+            }
+
+        }
+
+        &.red {
+
+            [class^="dot-"],
+            .tooltip,
+            .tooltip:after {
+                background-color: $red;
+            }
+
+            .dot-1 {
+                left: 7px;
+                top: 43px;
+            }
+
+            .dot-2 {
+                left: 48px;
+                top: 9px;
+            }
+
+            .dot-3 {
+                left: 88px;
+                top: 20px;
+            }
+
+            .dot-4 {
+                left: 128px;
+                top: 8px;
+            }
+
+            .dot-5 {
+                left: 169px;
+                top: 35px;
+            }
+
+            .dot-6 {
+                left: 209px;
+                top: 45px;
+            }
+
+            .dot-7 {
+                left: 249px;
+                top: 16px;
+            }
+        }
+
+        &.blue {
+
+            [class^="dot-"],
+            .tooltip,
+            .tooltip:after {
+                background-color: $blue;
+            }
+
+            .dot-1 {
+                left: 7px;
+                top: 58px;
+            }
+
+            .dot-2 {
+                left: 48px;
+                top: 47px;
+            }
+
+            .dot-3 {
+                left: 88px;
+                top: 62px;
+            }
+
+            .dot-4 {
+                left: 128px;
+                top: 52px;
+            }
+
+            .dot-5 {
+                left: 169px;
+                top: 58px;
+            }
+
+            .dot-6 {
+                left: 209px;
+                top: 71px;
+            }
+
+            .dot-7 {
+                left: 249px;
+                top: 61px;
+            }
+
+        }
+
+    }
+
+    .days {
+        width: 100%;
+        margin: 0 auto;
+
+        .day {
+            display: block;
+            float: left;
+            text-align: center;
+            width: (100%/7);
+            font-size: 12px;
+            color: gray;
+        }
+    }
+
+
+}
